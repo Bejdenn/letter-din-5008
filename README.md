@@ -1,22 +1,53 @@
-# Latex-Briefvorlage nach DIN 5008
-Eine einfache Latex-Briefvorlage für Privatleute, die größtenteils der DIN 5008 entsprechen sollte. Erstellt auf Basis von KOMA-Script scrlttr2.
+# LaTeX Letter Template (DIN 5008)
 
-Ziel ist es eine Vorlage zu haben, die allgemeinverständlich und alltagstauglich ist. Daher ist jede Option und jeder Parameter erklärt und kommentiert. Um das Dokument möglichst kurz zu halten, sind nur Elemente enthalten, die für eine "normale" Privatperson relevant sein könnten.
+This is a simple LaTeX template for creating letters that conform to the German
+DIN 5008 standard. It is based on the KOMA-Script `scrlttr2` class.
 
-Das Aussehen ist möglichst schlicht und minimalistisch, soweit dies die Gebrauchstauglichkeit nicht einschränkt.
+## Installation
 
-Ein Teil der Elemente ist auskommentiert und kann bei Bedarf aktiviert werden. Z.B. "Kundenummer" oder "Ihr Zeichen", welche seltener benötigt werden. Außerdem kann das Aussehen leicht angepasst werden.
+To install the template, you need to have `make` and a TeX distribution (like
+TeX Live) installed.
 
-[Latex-Briefvorlage.tex](https://github.com/PanCakeConnaisseur/latex-briefvorlage-din-5008/blob/master/Latex-Briefvorlage.tex) ist alles was benötigt wird, es gibt bewusst keine Includes. Alle anderen Dateien sind Beispiele und Dokumentation.
+Run the following command in your terminal:
 
-## Screenshots
+```bash
+make install
+```
 
-### Briefvorlage mit Standardoptionen
-![Briefvorlage mit Standardoptionen](Screenshots/Briefvorlage%20mit%20Standardoptionen.png)
+This will copy the `letter-din-5008.sty` file to your local TeX tree, making it
+available to all your LaTeX projects.
 
-[im PDF-Format](Beispiele/Latex-Briefvorlage%20mit%20Standardoptionen.pdf)
+## Usage
 
-### Briefvorlage mit allen Optionen
-![Briefvorlage mit allen Optionen](Screenshots/Briefvorlage%20mit%20allen%20Optionen.png)
+Here is a minimal example of how to use the template:
 
-[im PDF-Format](Beispiele/Latex-Briefvorlage%20mit%20allen%20Optionen.pdf)
+```latex
+\documentclass[
+    parskip=full,
+    paper=A4,
+    fromalign=right,
+    fromphone=true,
+    fromemail=true,
+    version=last,
+]{scrlttr2}
+
+\usepackage{letter-din-5008}
+
+\begin{document}
+
+\makeletter
+  {Max Mustermann} % Sender Name
+  {Musterstraße 1
+    \\12345 Musterstadt} % Sender Address
+  {01234/56789} % Sender Phone
+  {max.mustermann@example.com} % Sender E-Mail
+  {Empfängerfirma GmbH\\
+    Frau Erika Musterfrau\\
+    Zielstraße 99\\
+    54321 Zielhausen} % Recipient
+  {Your request from dd.mm.yyyy} % Subject
+  {Dear Ms. Musterfrau,} % Opening
+  {Here is the main content of the letter.} % Body
+
+\end{document}
+```

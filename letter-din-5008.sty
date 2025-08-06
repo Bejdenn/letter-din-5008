@@ -1,0 +1,51 @@
+% Set input encoding to UTF-8
+\usepackage[utf8]{inputenc}
+
+% Add support for the Euro symbol
+\usepackage{eurosym}
+\DeclareUnicodeCharacter{20AC}{\euro}
+
+% Set german as language for the letter
+\usepackage[ngerman]{babel}
+% Include other PDFs
+\usepackage{pdfpages}
+% Add hyperlinks to the letter
+\usepackage[hidelinks]{hyperref}
+
+% Set the signature to be left-aligned
+\renewcommand*{\raggedsignature}{\raggedright}
+% Set the page number to be just the number
+\renewcommand{\pagemark}{{\usekomafont{pagenumber}{\thepage}}}
+
+% Setup the sender of the letter
+% #1: fromname
+% #2: fromaddress
+% #3: fromphone
+% #4: fromemail
+\newcommand{\setupsender}[4]{%
+  \setkomavar{fromname}{#1}%
+  \setkomavar{fromaddress}{#2}%
+  \setkomavar{fromphone}{#3}%
+  \setkomavar{fromemail}{\href{mailto:#4}{#4}}%
+  \setkomavar{date}{\today}%
+  \setkomavar{signature}{#1}
+}
+
+% Create a new letter
+% #1: fromname
+% #2: fromaddress
+% #3: fromphone
+% #4: fromemail
+% #5: toaddress
+% #6: subject
+% #7: opening
+% #8: body
+\newcommand{\makeletter}[8]{%
+  \setupsender{#1}{#2}{#3}{#4}%
+  \setkomavar{subject}{#6}%
+  \begin{letter}{#5}%
+    \opening{#7}%
+    #8\par
+    \closing{Mit freundlichen Grüßen\\}%
+  \end{letter}%
+}
