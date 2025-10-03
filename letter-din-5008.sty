@@ -12,10 +12,10 @@
 % Add hyperlinks to the letter
 \usepackage[hidelinks]{hyperref}
 
-% Set the signature to be left-aligned
-\renewcommand*{\raggedsignature}{\raggedright}
 % Set the page number to be just the number
 \renewcommand{\pagemark}{{\usekomafont{pagenumber}{\thepage}}}
+
+\LoadLetterOption{DIN5008B}
 
 % Setup the sender of the letter
 % #1: fromname

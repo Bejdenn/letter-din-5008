@@ -1,7 +1,8 @@
 # LaTeX Letter Template (DIN 5008)
 
 This is a simple LaTeX template for creating letters that conform to the German
-DIN 5008 standard. It is based on the KOMA-Script `scrlttr2` class.
+DIN 5008 standard, from the the year 2020. It is based on the KOMA-Script
+`scrlttr2` class.
 
 ## Installation
 
